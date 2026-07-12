@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1020">
+  <title>Hana Nobar</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="shell">
+    <section id="loginView" class="login-card">
+      <div class="brand-mark">▶</div>
+      <p class="eyebrow">PRIVATE WATCH PARTY</p>
+      <h1>Hana Nobar</h1>
+      <p id="lobbyText" class="muted">Memeriksa sesi yang sedang berjalan…</p>
+
+      <form id="loginForm" autocomplete="off">
+        <label for="tokenInput">Token akses</label>
+        <input id="tokenInput" name="token" inputmode="text" maxlength="32" placeholder="NBR-XXXX-XXXX-XXXX" required>
+        <button type="submit" class="primary">Masuk ke Nobar</button>
+      </form>
+      <p id="loginError" class="error" role="alert"></p>
+      <p class="hint">Token diperoleh melalui perintah <b>.joinnobar &lt;nama&gt;</b> di WhatsApp.</p>
+    </section>
+
+    <section id="roomView" class="room hidden">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">SEDANG NOBAR</p>
+          <h1 id="roomTitle">Memuat…</h1>
+          <p class="room-meta"><span id="hostName"></span> · <span id="viewerCount">0</span> online</p>
+        </div>
+        <div class="top-actions">
+          <span id="roleBadge" class="badge"></span>
+          <button id="logoutButton" class="ghost">Keluar</button>
+        </div>
+      </header>
+
+      <div class="room-grid">
+        <section class="watch-panel">
+          <div id="playerFrame" class="player-frame">
+            <video id="videoPlayer" playsinline preload="metadata" class="hidden"></video>
+            <div id="youtubeWrap" class="hidden"><div id="youtubePlayer"></div></div>
+            <div id="tiktokWrap" class="hidden"><iframe id="tiktokPlayer" allow="autoplay; fullscreen" allowfullscreen></iframe></div>
+            <div id="playerMessage" class="player-message">Menyiapkan pemutar…</div>
+            <button id="syncButton" class="sync-button hidden">Ketuk untuk menyinkronkan video</button>
+          </div>
+
+          <div class="control-row">
+            <button id="fullscreenButton" class="ghost">⛶ Layar penuh</button>
+            <button id="endButton" class="danger hidden">Akhiri sesi</button>
+            <span id="syncState" class="sync-state">Menghubungkan…</span>
+          </div>
+
+          <div class="reactions" aria-label="Reaksi">
+            <button data-reaction="👍">👍 <span>0</span></button>
+            <button data-reaction="❤️">❤️ <span>0</span></button>
+            <button data-reaction="😂">😂 <span>0</span></button>
+            <button data-reaction="🔥">🔥 <span>0</span></button>
+          </div>
+          <div id="reactionFloat" class="reaction-float" aria-hidden="true"></div>
+        </section>
+
+        <aside class="chat-panel">
+          <div class="chat-heading">
+            <div>
+              <p class="eyebrow">LIVE CHAT</p>
+              <strong id="myName">Penonton</strong>
+            </div>
+          </div>
+          <div id="chatMessages" class="chat-messages" aria-live="polite"></div>
+          <form id="chatForm" class="chat-form">
+            <input id="chatInput" maxlength="220" placeholder="Ketik pesan…" autocomplete="off">
+            <button type="submit" class="primary">Kirim</button>
+          </form>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1/dist/hls.min.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
