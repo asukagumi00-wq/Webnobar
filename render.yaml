@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: hana-nobar
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NOBAR_BOT_SECRET
+        sync: false
+      - key: NOBAR_PUBLIC_URL
+        sync: false
+      - key: NOBAR_TOKEN_TTL_MINUTES
+        value: "360"
+      - key: NOBAR_SESSION_MAX_HOURS
+        value: "6"
