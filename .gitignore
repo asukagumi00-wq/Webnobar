@@ -1,5 +1,0 @@
-node_modules/
-.env
-data/state.json
-public/media/*
-!public/media/.gitkeep
